@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FYP: DIAGNOSIS AND TREATMENT RECOMMENDER FOR DIABETIC PATIENT USING DECISION TREE</title>
+    <link rel="stylesheet" href="/static/css/menustyle.css">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo_content">
+            <div class="logo">
+                <i class='bx bxs-heart'></i>
+                <div class="logo_name">Hello, {{ name }}</div>
+            </div>
+            <i class='bx bx-menu' id='btn'></i>
+        </div>
+        <ul class="nav">
+            <li>
+                <a href="{{ url_for('home') }}">
+                    <i class='bx bxs-dashboard'></i>
+                    <span class="link_name">Dashboard</span>
+                </a>
+                <span class="tooltip">Dashboard</span>
+            </li>
+            <li>
+                <a href="{{ url_for('form') }}">
+                    <i class='bx bx-plus-medical'></i>
+                    <span class="link_name">Diagnosis</span>
+                </a>
+                <span class="tooltip">Diagnosis</span>
+            </li>
+            <li>
+                <a href="{{ url_for('logout') }}">
+                    <i class='bx bxs-log-out'></i>
+                    <span class="link_name">Log Out</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="home_content">
+       {% block content %}{% endblock %}
+    </div>
+
+    <script src="/static/js/menuscript.js"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+﻿RecordNumber,Name,Age,Gender,Race,BMI,Asymptomatic,Increased thirst,Polydipsia,Polyuria,lethargy,Weight loss,Blurring of Vision,Recurrent infection,Obesity,Acanthosis Nigricans,A1c,FPG,RPG,OGTT,HDL,TG,CVD,IGT or IFG on previous testing,Women who delivered a baby weighing >= 4kg ,Women with GDM ,Women with PCOS,receiving antiretroviral therapy OR atypical antipsychotic OR taking iron supplement,on erythropoietin injections,Physical inactivity,Smokers ,Not Balanced diet,First degree relative with diabetes,Dyslipidaemia,Hypertension,Pancreatic damage or surgery,"genetic, haematologic and illness-related factors",Anaemia,CKD,Diagnosis
+57,Ahmad Umar Abdullah,40,1,Malay,10,0,0,0,1,1,1,0,0,3,0,1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,2
+32,Nurul Amira ,27,0,Malay,24,1,0,0,0,0,0,0,0,3,0,0,0,1,0,0,1,0,0,0,0,0,0,0,1,1,0,0,0,0,1,1,0,0,2
+27,Mohd Hafiz bin Kamal,31,1,Malay,25,0,1,0,1,1,0,1,0,3,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,2
+55,Mohd Zainal,40,1,Malay,8,0,0,1,0,0,0,0,0,2,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,2
+5,Luqman Razak,25,1,Malay,22,1,0,0,0,0,0,0,0,2,0,0,1,0,0,0,0,1,0,0,0,1,1,1,0,0,1,0,0,0,0,0,0,0,2
+67,Siti Munirah Omar,20,0,Malay,30,1,0,0,0,0,0,0,0,0,0,0,0,2,4,0,1,0,0,0,0,0,1,1,0,0,1,1,1,0,1,0,1,1,3
+104,Ahmad Abdullah,54,1,Malay,25,1,0,0,0,0,0,0,0,3,1,0,2,0,4,1,0,0,1,1,0,0,0,1,1,0,1,0,1,0,1,0,0,0,3
+94,Zaiton Mohd Noor,51,0,Malay,21,0,1,1,0,1,0,1,1,4,1,2,2,0,4,0,1,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,3
+100,Liew Wei Ming,53,1,Chinese,36,0,1,1,0,0,0,1,1,2,1,2,2,0,4,0,0,0,0,0,1,1,0,0,0,0,1,0,1,1,0,0,0,0,3
+96,Lee Mei Lin,51,0,Chinese,41,0,0,0,0,0,0,1,0,3,1,2,0,2,2,0,0,1,0,0,0,1,0,0,0,0,1,1,1,1,0,0,1,0,3
+103,,53,1,,37,0,0,0,0,1,1,0,1,3,0,2,0,2,4,0,1,0,0,1,0,1,0,0,0,0,1,0,1,0,0,0,1,0,3
+3729,,58,0,,32,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,4
+4166,,63,0,,30,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,4
+4109,,69,0,,38,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4
+3626,,63,0,,30,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,4
+4189,,47,0,,26,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4
+4525,Mustafa Ismail,65,1,Malay,34,1,0,0,0,0,0,0,0,2,0,1,0,0,0,1,0,0,0,0,0,1,0,1,1,1,0,1,0,0,0,0,0,0,4
+4951,Foo Ying Heng,59,1,Chinese,20,1,0,0,0,0,0,0,0,2,0,1,0,0,0,1,0,0,0,0,0,1,0,1,1,1,0,1,0,0,0,0,0,0,4
+4983,,56,1,,22,1,0,0,0,0,0,0,0,2,0,1,0,0,0,1,0,0,0,0,0,1,0,1,1,1,0,1,0,0,0,0,0,0,4
+4760,Noraini Ahmad,45,0,Malay,38,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4

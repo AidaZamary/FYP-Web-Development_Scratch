@@ -1,0 +1,496 @@
+{% extends "menu.html" %}
+
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/formstyle.css">
+    <script src="/static/js/formscript.js" defer></script>
+</head>
+<body>
+    <div class="text">
+        <div class="header">
+            <h3>Diagnosis and Recommender for Diabetic Patient using Decision Tree</h3>
+        </div>
+        <div class="content">
+          <form class="form"  id="diagnosisForm" method="post" action="/prediction">
+                <h5 class="text-center">Diagnosis Form</h5>
+                <!-- Progress bar -->
+                <div class="progressbar">
+                  <div class="progress" id="progress"></div>
+                  <div class="progress-step" data-title="Demographic"></div>
+                  <div class="progress-step" data-title="Symptoms"></div>
+                  <div class="progress-step" data-title="Physical Examination"></div>
+                  <div class="progress-step" data-title="Laboratory Report"></div>
+                  <div class="progress-step" data-title="Previous Disease"></div>
+                  <div class="progress-step" data-title="Medication"></div>
+                  <div class="progress-step" data-title="Social History"></div>
+                  <div class="progress-step" data-title="Family History"></div>
+                  <div class="progress-step" data-title="Comorbidity"></div> 
+                </div>
+          
+                <!-- Steps -->
+                <!--Demographic-->
+                <div class="form-step form-step-active">
+                 <div class="input-group">
+                    <label for="ptname">Patient Name</label><br/>
+                    <input type="text" name="ptname" id="ptname" value="{{ patients[1] }}"/>
+                  </div> 
+                  <div class="input-group">
+                    <label for="ptage">Patient Age</label><br/>
+                    <input type="text" name="ptage" id="ptage" value="{{ patients[2] }}" />
+                  </div>
+                  <div class="input-group">
+                    <label for="ptgender">Patient Gender</label><br/>
+                    <div class="select">
+                      <select name="ptgender" id="ptgender">
+                         <option selected disabled>Choose gender</option>
+                         <option value="0" {% if patients[3] == 0 %}selected{% endif %}>Female</option>
+                         <option value="1" {% if patients[3] == 1 %}selected{% endif %}>Male</option>
+                      </select>
+                   </div>
+                  </div>
+                  <div class="input-group">
+                    <label for="ptrace">Patient Race</label><br/>
+                    <div class="select">
+                      <select name="ptrace" id="ptrace">
+                         <option selected disabled>Choose race</option>
+                         <option value="Malay" {% if patients[4] == "Malay" %}selected{% endif %}>Malay</option>
+                         <option value="Chinese" {% if patients[4] == "Chinese" %}selected{% endif %}>Chinese</option>
+                         <option value="Indian" {% if patients[4] == "Indian" %}selected{% endif %}>Indian</option>
+                         <option value="Other" {% if patients[4] == "Other" %}selected{% endif %}>Other</option>
+                      </select>
+                   </div>
+                  </div>
+                  <div class="input-group">
+                    <label for="ptbmi">BMI</label><br/>
+                    <input type="text" name="ptbmi" id="ptbmi" value="{{ patients[5] }}" />
+                  </div>
+                  <div class="">
+                    <a href="#" class="btn btn-next width-50 ml-auto">Next</a>
+                  </div>
+                </div>
+                <!--Symptoms-->
+                <div class="form-step">
+                  <div class="input-group">
+                    <label for="ptasympt">Asymptomatic</label>
+                    <div class="select">
+                      <select name="ptasympt" id="ptasympt" >
+                         <option selected disabled></option>
+                         <option value="0" {% if patients[6] == 0 %}selected{% endif %}>No</option>
+                         <option value="1" {% if patients[6] == 1 %}selected{% endif %}>Yes</option>
+                      </select>
+                   </div>
+                  </div>
+                  <div class="input-group">
+                    <label for="increasethir">Increased thirst</label>
+                    <div class="select">
+                      <select name="increasethir" id="increasethir">
+                         <option selected disabled></option>
+                         <option value="0" {% if patients[7] == 0 %}selected{% endif %}>No</option>
+                         <option value="1" {% if patients[7] == 1 %}selected{% endif %}>Yes</option>
+                      </select>
+                   </div>
+                  </div>
+                  <div class="input-group">
+                    <label for="polydipsia">Polydipsia</label>
+                    <div class="select">
+                      <select name="polydipsia" id="polydipsia">
+                         <option selected disabled></option>
+                         <option value="0" {% if patients[8] == 0 %}selected{% endif %}>No</option>
+                         <option value="1" {% if patients[8] == 1 %}selected{% endif %}>Yes</option>
+                      </select>
+                   </div>
+                   </div>
+                  <div class="input-group">
+                    <label for="polyuria">Polyuria</label>
+                    <div class="select">
+                      <select name="polyuria" id="polyuria">
+                         <option selected disabled></option>
+                         <option value="0" {% if patients[9] == 0 %}selected{% endif %}>No</option>
+                         <option value="1" {% if patients[9] == 1 %}selected{% endif %}>Yes</option>
+                      </select>
+                   </div>
+                  </div>
+                  <div class="input-group">
+                    <label for="lethargy">Lethargy</label>
+                    <div class="select">
+                      <select name="lethargy" id="lethargy">
+                         <option selected disabled></option>
+                         <option value="0" {% if patients[10] == 0 %}selected{% endif %}>No</option>
+                         <option value="1" {% if patients[10] == 1 %}selected{% endif %}>Yes</option>
+                      </select>
+                   </div>
+                  </div>
+                  <div class="input-group">
+                    <label for="weightloss">Weight Loss</label>
+                    <div class="select">
+                      <select name="weightloss" id="weightloss">
+                         <option selected disabled></option>
+                         <option value="0" {% if patients[11] == 0 %}selected{% endif %}>No</option>
+                         <option value="1" {% if patients[11] == 1 %}selected{% endif %}>Yes</option>
+                      </select>
+                   </div>
+                  </div>
+                  <div class="input-group">
+                    <label for="vision">Blurring of vision</label>
+                    <div class="select">
+                      <select name="vision" id="vision">
+                         <option selected disabled></option>
+                         <option value="0" {% if patients[12] == 0 %}selected{% endif %}>No</option>
+                         <option value="1" {% if patients[12] == 1 %}selected{% endif %}>Yes</option>
+                      </select>
+                   </div>
+                  </div>
+                  <div class="input-group">
+                    <label for="infection">Recurrent Infection</label>
+                    <div class="select">
+                      <select name="infection" id="infection">
+                         <option selected disabled></option>
+                         <option value="0" {% if patients[13] == 0 %}selected{% endif %}>No</option>
+                         <option value="1" {% if patients[13] == 1 %}selected{% endif %}>Yes</option>
+                      </select>
+                   </div>
+                  </div>
+                  <div class="input-group">
+                    <label for="obesity">Obesity</label>
+                    <div class="select">
+                      <select name="obesity" id="obesity">
+                         <option selected disabled></option>
+                         <option value="0" {% if patients[14] == 0 %}selected{% endif %}>Underweight [BMI=Below 18.5]</option>
+                         <option value="2" {% if patients[14] == 2 %}selected{% endif %}>Normal [BMI=18.5-24.5]</option>
+                         <option value="3" {% if patients[14] == 3 %}selected{% endif %}>Overweight [BMI=25.0-29.9]</option>
+                         <option value="4" {% if patients[14] == 4 %}selected{% endif %}>Obese [BMI=30.0 and Above]</option>
+                      </select>
+                   </div>
+                  </div>
+                  <div class="btns-group">
+                    <a href="#" class="btn btn-prev">Previous</a>
+                    <a href="#" class="btn btn-next">Next</a>
+                  </div>
+                </div>
+                <!--Physical Examination-->
+                <div class="form-step">
+                <div class="input-group">
+                  <label for="acanthosis">Acanthosis Nigricans</label>
+                  <div class="select">
+                    <select name="acanthosis" id="acanthosis">
+                       <option selected disabled></option>
+                       <option value="1" {% if patients[15] == 1 %}selected{% endif %}>No</option>
+                       <option value="0" {% if patients[15] == 0 %}selected{% endif %}>Yes</option>
+                    </select>
+                 </div>
+                </div>
+                <div class="btns-group">
+                  <a href="#" class="btn btn-prev">Previous</a>
+                  <a href="#" class="btn btn-next">Next</a>
+                </div>
+              </div>
+              <!--Laboratory Report-->
+              <div class="form-step">
+                <div class="input-group">
+                  <label for="password">A1c</label>
+                  <div class="select">
+                    <select name="A1c" id="A1c">
+                       <option selected disabled></option>
+                       <option value="0" {% if patients[16] == 0 %}selected{% endif %}> below 5.7% /39 mmol/mol </option>
+                       <option value="1" {% if patients[16] == 1 %}selected{% endif %}> 5.7% or below 6.8% / 39-44 mmol/mol</option>
+                       <option value="2" {% if patients[16] == 2 %}selected{% endif %}> more or equal 6.3% / >=45 mmol/mol</option>
+                    </select>
+                 </div>
+                </div>
+                <div class="input-group">
+                  <label for="confirmPassword">FPG (Fasting plasma glucose)</label>
+                  <div class="select">
+                    <select name="fpg" id="fpg">
+                       <option selected disabled></option>
+                       <option value="0" {% if patients[17] == 0 %}selected{% endif %}>below 5.6</option>
+                       <option value="1" {% if patients[17] == 1 %}selected{% endif %}>below 7.0</option>
+                       <option value="2" {% if patients[17] == 2 %}selected{% endif %}>more or equal 7.0</option>
+                    </select>
+                 </div>
+                </div>
+                <div class="input-group">
+                  <label for="password">RPG (Random plasma glucose)</label>
+                  <div class="select">
+                    <select name="rpg" id="rpg">
+                       <option selected disabled></option>
+                       <option value="0" {% if patients[18] == 0 %}selected{% endif %}>below 7.8</option>
+                       <option value="1" {% if patients[18] == 1 %}selected{% endif %}>below 11.1</option>
+                       <option value="2" {% if patients[18] == 2 %}selected{% endif %}>more or equal 11.1</option>
+                    </select>
+                 </div>
+                </div>
+                <div class="input-group">
+                  <label for="password">OGTT</label>
+                  <div class="select">
+                    <select name="ogtt" id="ogtt">
+                       <option selected disabled></option>
+                       <option value="0" {% if patients[19] == 0 %}selected{% endif %}>below 140 mg/dL</option>
+                       <option value="1" {% if patients[19] == 1 %}selected{% endif %}> 140-199 mg/dL</option>
+                       <option value="2" {% if patients[19] == 2 %}selected{% endif %}>more or equal 200 mg/dL</option>
+                    </select>
+                 </div>
+                </div>
+                <div class="input-group">
+                  <label for="password">HDL (High-density lipoprotein)</label>
+                  <div class="select">
+                    <select name="hdl" id="hdl">
+                       <option selected disabled></option>
+                       <option value="0" {% if patients[20] == 0 %}selected{% endif %}> below 1</option>
+                       <option value="1" {% if patients[20] == 1 %}selected{% endif %}>high 1</option>
+                    </select>
+                 </div>
+                </div>
+                <div class="input-group">
+                  <label for="password">TG</label>
+                  <div class="select">
+                    <select name="tg" id="tg">
+                       <option selected disabled></option>
+                       <option value="0" {% if patients[21] == 0 %}selected{% endif %}>below or equal 2.8</option>
+                       <option value="1" {% if patients[21] == 1 %}selected{% endif %}>more 2.8</option>
+                    </select>
+                 </div>
+                </div>  
+                <div class="btns-group">
+                  <a href="#" class="btn btn-prev">Previous</a>
+                  <a href="#" class="btn btn-next">Next</a>
+                </div>
+                </div>
+
+                <!--Previous Disease-->
+                <div class="form-step">
+                  <div class="input-group">
+                    <label for="CVD">History of CVD</label>
+                    <div class="select">
+                      <select name="CVD" id="CVD">
+                         <option selected disabled></option>
+                         <option value="0" {% if patients[22] == 0 %}selected{% endif %}>No</option>
+                         <option value="1" {% if patients[22] == 1 %}selected{% endif %}>Yes</option>
+                      </select>
+                   </div>
+                  </div>
+                  <div class="input-group">
+                    <label for="confirmPassword">IGT or IFG on previous testing</label>
+                    <div class="select">
+                      <select name="prevIGTnIFG" id="prevIGTnIFG">
+                         <option selected disabled></option>
+                         <option value="0" {% if patients[23] == 0 %}selected{% endif %}>No</option>
+                         <option value="1" {% if patients[23] == 1 %}selected{% endif %}>Yes</option>
+                      </select>
+                   </div>
+                  </div>
+
+                  {% if patients[3] == 0 %}
+                  <div class="input-group">
+                    <label for="password">Woman who delivered a baby weighing >= 4kg</label>
+                    <div class="select">
+                      <select name="womandelivered" id="womandelivered">
+                         <option selected disabled></option>
+                         <option value="0" {% if patients[24] == 0 %}selected{% endif %}>No</option>
+                         <option value="1" {% if patients[24] == 1 %}selected{% endif %}>Yes</option>
+                      </select>
+                   </div>
+                  </div>
+                  <div class="input-group">
+                    <label for="password">Woman with GDM</label>
+                    <div class="select">
+                      <select name="womanGDM" id="womanGDM">
+                         <option selected disabled></option>
+                         <option value="0" {% if patients[25] == 0 %}selected{% endif %}>No</option>
+                         <option value="1" {% if patients[25] == 1 %}selected{% endif %}>Yes</option>
+                      </select>
+                   </div>
+                  </div>
+                  <div class="input-group">
+                    <label for="password">Woman with PCOS</label>
+                    <div class="select">
+                      <select name="womanPCOS" id="womanPCOS">
+                         <option selected disabled></option>
+                         <option value="0" {% if patients[26] == 0 %}selected{% endif %}>No</option>
+                         <option value="1" {% if patients[26] == 1 %}selected{% endif %}>Yes</option>
+                      </select>
+                   </div>
+                  </div>
+                  {% endif %}
+
+                  <div class="btns-group">
+                    <a href="#" class="btn btn-prev">Previous</a>
+                    <a href="#" class="btn btn-next">Next</a>
+                  </div>
+                </div>
+
+                <!--Medication-->
+                <div class="form-step">
+                  <div class="input-group">
+                    <label for="password">Receiving antiretroviral therapy or atypical antipsychotic</label>
+                    <div class="select">
+                      <select name="therapy" id="therapy">
+                         <option selected disabled></option>
+                         <option value="0" {% if patients[27] == 0 %}selected{% endif %}>No</option>
+                         <option value="1" {% if patients[27] == 1 %}selected{% endif %}>Yes</option>
+                      </select>
+                   </div>
+                  </div>
+                  <div class="input-group">
+                    <label for="confirmPassword">On erythropoietin injections</label>
+                    <div class="select">
+                      <select name="injection" id="injection">
+                         <option selected disabled></option>
+                         <option value="0" {% if patients[28] == 0 %}selected{% endif %}>No</option>
+                         <option value="1" {% if patients[28] == 1 %}selected{% endif %}>Yes</option>
+                      </select>
+                   </div>
+                  </div>
+                  <div class="btns-group">
+                    <a href="#" class="btn btn-prev">Previous</a>
+                    <a href="#" class="btn btn-next">Next</a>
+                  </div>
+                </div> 
+
+                <!--Social History-->
+                <div class="form-step">
+                  <div class="input-group">
+                    <label for="password">Physical inactivity</label>
+                    <div class="select">
+                      <select name="physicalInactivity" id="physicalInactivity">
+                         <option selected disabled></option>
+                         <option value="0" {% if patients[29] == 0 %}selected{% endif %}>No</option>
+                         <option value="1" {% if patients[29] == 1 %}selected{% endif %}>Yes</option>
+                      </select>
+                   </div>
+                  </div>
+                  <div class="input-group">
+                    <label for="confirmPassword">Smoking</label>
+                    <div class="select">
+                      <select name="smoker" id="smoker">
+                         <option selected disabled></option>
+                         <option value="0" {% if patients[30] == 0 %}selected{% endif %}>No</option>
+                         <option value="1" {% if patients[30] == 1 %}selected{% endif %}>Yes</option>
+                      </select>
+                   </div>
+                  </div>
+                  <div class="input-group">
+                    <label for="password">Not Balanced Diet</label>
+                    <div class="select">
+                      <select name="notBalancedDiet" id="notBalancedDiet">
+                         <option selected disabled></option>
+                         <option value="0" {% if patients[31] == 0 %}selected{% endif %}>No</option>
+                         <option value="1" {% if patients[31] == 1 %}selected{% endif %}>Yes</option>
+                      </select>
+                   </div>
+                  </div>
+                  <div class="btns-group">
+                    <a href="#" class="btn btn-prev">Previous</a>
+                    <a href="#" class="btn btn-next">Next</a>
+                  </div>
+                </div> 
+
+                 <!--Family History-->
+                 <div class="form-step">
+                  <div class="input-group">
+                    <label for="relative">First degree relative with diabetes</label>
+                    <div class="select">
+                      <select name="relativeDiabetes" id="relativeDiabetes">
+                         <option selected disabled></option>
+                         <option value="0" {% if patients[32] == 0 %}selected{% endif %}>No</option>
+                         <option value="1" {% if patients[32] == 1 %}selected{% endif %}>Yes</option>
+                      </select>
+                   </div>
+                  </div>
+                  <div class="btns-group">
+                    <a href="#" class="btn btn-prev">Previous</a>
+                    <a href="#" class="btn btn-next">Next</a>
+                  </div>
+                </div> 
+
+                <!--Comorbidity-->
+                <div class="form-step">
+                  <div class="input-group">
+                    <label for="dyslipidaemia">Dyslipidaemia</label>
+                    <div class="select">
+                      <select name="dyslipidaemia" id="dyslipidaemia">
+                         <option selected disabled></option>
+                         <option value="0" {% if patients[33] == 0 %}selected{% endif %}>No</option>
+                         <option value="1" {% if patients[33] == 1 %}selected{% endif %}>Yes</option>
+                      </select>
+                   </div>
+                  </div>
+                  <div class="input-group">
+                    <label for="hypertension">Hypertension</label>
+                    <div class="select">
+                      <select name="hypertension" id="hypertension">
+                         <option selected disabled></option>
+                         <option value="0" {% if patients[34] == 0 %}selected{% endif %}>No</option>
+                         <option value="1" {% if patients[34] == 1 %}selected{% endif %}>Yes</option>
+                      </select>
+                   </div>
+                  </div>
+                  <div class="input-group">
+                    <label for="pancreatic">Pancreatic damage or surgery</label>
+                    <div class="select">
+                      <select name="pancreatic" id="pancreatic">
+                         <option selected disabled></option>
+                         <option value="0" {% if patients[35] == 0 %}selected{% endif %}>No</option>
+                         <option value="1" {% if patients[35] == 1 %}selected{% endif %}>Yes</option>
+                      </select>
+                   </div>
+                  </div>
+                  <div class="input-group">
+                    <label for="illness">Genetic, haematologic and illness-related factors</label>
+                    <div class="select">
+                      <select name="illness" id="illness">
+                         <option selected disabled></option>
+                         <option value="0" {% if patients[36] == 0 %}selected{% endif %}>No</option>
+                         <option value="1" {% if patients[36] == 1 %}selected{% endif %}>Yes</option>
+                      </select>
+                   </div>
+                  </div>
+                  <div class="input-group">
+                    <label for="anaemia">Anaemia</label>
+                    <div class="select">
+                      <select name="anaemia" id="anaemia">
+                         <option selected disabled></option>
+                         <option value="0" {% if patients[37] == 0 %}selected{% endif %}>No</option>
+                         <option value="1" {% if patients[37] == 1 %}selected{% endif %}>Yes</option>
+                      </select>
+                   </div>
+                  </div>
+                  <div class="input-group">
+                    <label for="CKD">CKD</label>
+                    <div class="select">
+                      <select name="CKD" id="CKD">
+                         <option selected disabled></option>
+                         <option value="0" {% if patients[38] == 0 %}selected{% endif %}>No</option>
+                         <option value="1" {% if patients[38] == 1 %}selected{% endif %}>Yes</option>
+                      </select>
+                   </div>
+                  </div>
+                  <div class="btns-group">
+                    <a href="#" class="btn btn-prev">Previous</a>
+                    <input type="submit" value="Diagnose" class="btn" onclick="confirmDiagnose()" />
+                  </div>
+                </div> 
+                </form>
+        </div>
+    </div>
+
+    <script>
+      // Function to show confirmation dialog
+      function confirmDiagnose() {
+          if (confirm("Are you sure you want to diagnose this patient?")) {
+              // If user confirms, submit the form
+              document.getElementById("diagnosisForm").submit();
+          } else {
+              event.preventDefault(); // Prevent default form submission action
+              return false;
+          }
+      }
+  </script>
+
+<body>
+
+
+{% endblock %}

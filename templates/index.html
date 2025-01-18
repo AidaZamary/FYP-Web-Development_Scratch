@@ -1,0 +1,155 @@
+{% extends "menu.html" %}
+
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function(){
+       $("#myInput").on("keyup",function(){
+        var value = $(this).val().toLowerCase();
+        $("#myTable tr").filter(function(){
+       $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+    
+        });
+    
+       });
+    
+        });
+    </script>    
+</head>
+<style>
+
+.search-container {
+    margin: auto;
+    margin-top: auto;
+    position: relative;
+    width: 300px;
+    height: 45px;
+    border: 4px solid #2980b9;
+    padding: 0px 10px;
+    border-radius: 50px;
+
+}
+.elementsContainer {
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.search {
+    border: none;
+    height: 200%;
+    width: 120%;
+    padding: 0px 5px;
+    border-radius: 50px;
+    font-size: 18px;
+    color: #424242;
+    font-weight: 500;
+}
+.search:focus {
+    outline: none;
+}
+
+.table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 99%;
+    margin-top: 5px;
+}
+
+.table td, .table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.table tr:nth-child(even){background-color: #f2f2f2;}
+
+.table tr:hover {background-color: #ddd;}
+
+.table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+
+.button-container {
+    text-align: center;
+}
+
+button {
+  background-color: #ddd;
+  border: none;
+  color: black;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 16px;
+}
+
+button:hover {
+  background-color: blue;
+}
+   
+</style>
+
+<body>
+    <div class="text">
+        <div class="header">
+            <h3>Diagnosis and Recommender for Diabetic Patient using Decision Tree</h3>
+        </div> 
+        <div class="content">
+            <!--Search box-->
+            <div class="search-container">
+            <table class="elementContainer">
+                <tr>
+                    <td>
+                        <input id="myInput" type="text" placeholder="Medical Record Number" 
+                        class="search">
+                    </td>
+                </tr>
+            </table>    
+            </div>
+
+            <!--Table-->
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Record Number </th>
+                        <th>Patient Name</th>
+                        <th>Action</th>
+                    </tr>
+                    <tbody id="myTable">
+                        {% for patients in patients %}
+                            <tr>
+                                <td>{{ patients[0] }}</td>
+                                <td>{{ patients[1] }}</td>
+                                <td class="button-container">
+                                    <form action="/form" method="POST">
+                                        <input type="hidden" name="patient_id" value="{{ patients[0] }}">
+                                        <button type="submit">Diagnose</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+        
+                </thead>
+                
+            </table>
+            
+        </div>
+    </div>
+<body>
+{% endblock %}
+
+

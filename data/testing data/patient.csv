@@ -1,0 +1,18 @@
+﻿RecordNumber,Name,Age,Gender,Race,BMI,Asymptomatic,Increased thirst,Polydipsia,Polyuria,lethargy,Weight loss,Blurring of Vision,Recurrent infection,Obesity,Acanthosis Nigricans,A1c,FPG,RPG,OGTT,HDL,TG,CVD,IGT or IFG on previous testing,Women who delivered a baby weighing >= 4kg ,Women with GDM ,Women with PCOS,receiving antiretroviral therapy OR atypical antipsychotic OR taking iron supplement,on erythropoietin injections,Physical inactivity,Smokers ,Not Balanced diet,First degree relative with diabetes,Dyslipidaemia,Hypertension,Pancreatic damage or surgery,"genetic, haematologic and illness-related factors",Anaemia,CKD,Diagnosis
+144,Amirul Hassan,28,1,Malay,14,1,0,0,0,0,0,0,0,3,0,0,0,0,0,1,0,0,0,0,0,1,0,0,1,0,0,1,0,0,0,0,0,0,1
+131,Tan Wei Chen,38,1,Chinese,15,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1,1,0,0,0,0,1,0,0,0,0,0,0,1
+247,Nurul Abdullah,32,0,Malay,5,0,0,0,0,0,0,0,0,2,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1
+223,Kamala Devi,12,0,Indian,6,0,0,0,0,0,0,0,0,3,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1
+212,Tan Ah Kow,42,1,Chinese,15,1,0,0,0,0,0,0,0,2,0,0,0,0,0,0,1,0,0,0,0,1,1,0,1,0,0,0,0,0,0,0,0,0,1
+246,Siti Aisyah,0,0,Malay,11,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1
+179,Raj Kumar,24,1,Indian,13,1,0,0,0,0,0,0,0,3,0,0,0,0,0,1,0,0,1,0,0,1,0,1,0,0,0,0,0,1,0,0,0,0,1
+123,Muhammad Ali,24,1,Malay,10,1,0,0,0,0,0,0,0,2,0,1,0,0,0,0,1,0,1,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,1
+107,Adam Bakri,4,1,Malay,14,1,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,1
+157,Emir Haziq,35,1,Malay,6,1,0,0,0,0,0,0,0,2,0,1,0,0,0,1,0,0,1,0,0,1,0,1,1,0,0,1,0,0,0,0,0,0,1
+286,Wong Mei Ling,29,0,Chinese,6,0,0,0,0,0,0,0,0,3,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1
+267,Priya Sharma,27,0,Indian,3,0,0,0,0,0,0,0,0,3,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1
+57,Ahmad Umar Abdullah,40,1,Malay,10,0,0,0,1,1,1,0,0,3,0,1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,2
+32,Nurul Amira ,27,0,Malay,24,1,0,0,0,0,0,0,0,3,0,0,0,1,0,0,1,0,0,0,0,0,0,0,1,1,0,0,0,0,1,1,0,0,2
+27,Mohd Hafiz bin Kamal,31,1,Malay,25,0,1,0,1,1,0,1,0,3,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,2
+55,Mohd Zainal,40,1,Malay,8,0,0,1,0,0,0,0,0,2,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,2
+5,Luqman Razak,25,1,Malay,22,1,0,0,0,0,0,0,0,2,0,0,1,0,0,0,0,1,0,0,0,1,1,1,0,0,1,0,0,0,0,0,0,0,2
